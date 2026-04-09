@@ -1,102 +1,141 @@
 # PolySOS
 
-**PolySOS** is a research-oriented Python toolbox for solving polynomial optimization problems using **Sum-of-Squares (SOS) relaxations**.
+**PolySOS** is a hybrid **MATLAB–Python** research toolbox for polynomial optimization via **Sum-of-Squares (SOS)** and **moment relaxations**.
 
-The library provides tools to construct polynomial representations, moment matrices, and solve SOS relaxations using SDP, SOCP, and chordal decomposition techniques.
+It provides separate implementations of:
+- **SOS-SDP**
+- **SOS-SOCP**
+- **Chordal-decomposed SOS-SDP**
 
----
-
-## 🚀 Features
-
-- Polynomial algebra (monomial and multivariate polynomial representation)
-- Moment and localizing matrix construction
-- SOS relaxations:
-  - Semidefinite Programming (SDP)
-  - Second-Order Cone Programming (SOCP)
-  - Chordal decomposition for large-scale problems
-- Sparse SOS via chordal graphs
+along with the algebraic and numerical tools required to construct these relaxations.
 
 ---
 
-## 📁 Project Structure
+## Features
 
-
-src/polysos/
-algebra/ # monomial and polynomial classes
-moments/ # moment and localizing matrices
-chordal_graph/ # sparsity + graph tools
-sos_relaxation/ # SOS formulation
-sos_relaxation_solvers/ # SDP / SOCP solvers
-
+- Monomial and polynomial representations
+- Multi-index generation
+- Moment matrix construction
+- Localizing matrix construction
+- SOS relaxations for constrained polynomial optimization
+- Multiple solver backends:
+  - **SDP**
+  - **SOCP**
+  - **Chordal SDP**
+- Independent implementations in both **Python** and **MATLAB**
 
 ---
 
-## ⚙️ Installation
+## Repository Structure
 
-Clone the repository and install in editable mode:
+```text
+PolySOS/
+├── docs/
+│   ├── overview.pdf
+│   ├── methodology.pdf
+│   ├── architecture.pdf
+│   └── Lasserre-theorems-proofs.pdf
+├── examples/
+│   ├── python/
+│   │   └── basic_sos_example.py
+│   └── matlab/
+│       └── basic_sos_example.m
+├── matlab/
+│   ├── localizing_matrix.m
+│   ├── moment_matrix.m
+│   ├── multiindex.m
+│   ├── sos_relaxation.m
+│   ├── sos_sdp.m
+│   ├── sos_socp.m
+│   ├── sos_chordal_sdp.m
+│   └── chordal_decomposition/
+├── src/
+│   └── polysos/
+│       ├── algebra/
+│       ├── chordal_graph/
+│       ├── moments/
+│       ├── sos_relaxation/
+│       └── sos_relaxation_solvers/
+├── tests/
+├── pyproject.toml
+└── README.md
+```
 
-git clone https://github.com/yourusername/PolySOS.git
+---
+
+## Installation
+
+```bash
+git clone https://github.com/Roozbeh-Abolpour/PolySOS.git
 cd PolySOS
 pip install -e .
+```
 
+```bash
+pip install -e .[dev]
+```
 
 ---
 
-▶️ Quick Example
+## Documentation
+
+- docs/overview.pdf  
+- docs/methodology.pdf  
+- docs/architecture.pdf  
+- docs/Lasserre-theorems-proofs.pdf  
+
+---
+
+## Implemented Methods
+
+### SOS-SDP
+Full moment + localizing PSD constraints
+
+### SOS-SOCP
+SOC constraints via 2×2 minors
+
+### Chordal SOS-SDP
+PSD decomposition into smaller blocks
+
+---
+
+## Quick Start
+
+### Python
+
+```python
 from polysos.algebra.polynomial.polynomial import Polynomial
 from polysos.sos_relaxation.sos_relaxation import SOSRelaxation
+```
 
+See: examples/python/basic_sos_example.py
 
-👉 See examples/ for full working scripts.
+### MATLAB
+
+See: examples/matlab/basic_sos_example.m
 
 ---
 
-🧠 Methodology
+## Running Tests
 
-PolySOS implements classical SOS-based polynomial optimization:
-
-A polynomial optimization problem is lifted into a moment space
-Positivity constraints are enforced via semidefinite conditions
-Relaxations can be solved using:
-Full SDP
-SOCP approximations
-Chordal decomposition for scalability
-📊 MATLAB Reference Implementation
-
-A MATLAB implementation is also provided in the matlab/ folder for:
-
-Validation
-Comparison
-Educational purposes
-🧪 Tests
-
-Run tests:
-
+```bash
 pytest tests/
-📌 Status
-
-⚠️ Research prototype
-This library is under active development and primarily intended for research and experimentation.
+```
 
 ---
 
-👤 Author
+## Design Philosophy
+
+Polynomial → Moment lifting → Matrix construction → Solver backend
+
+---
+
+## Author
 
 Roozbeh Abolpour
-Ph.D. in Control and Optimization
-Research areas:
-
-Polynomial Optimization
-QCQP and Nonconvex Optimization
-Data-Driven Control (MPC)
-Energy Systems
 
 ---
 
-📜 License
+## License
 
-MIT License (or choose your preferred license)
-
-
----
-
+MIT License
