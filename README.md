@@ -35,29 +35,21 @@ sos_relaxation_solvers/ # SDP / SOCP solvers
 
 Clone the repository and install in editable mode:
 
-```bash
 git clone https://github.com/yourusername/PolySOS.git
 cd PolySOS
 pip install -e .
+
+
+---
+
 ▶️ Quick Example
 from polysos.algebra.polynomial.polynomial import Polynomial
 from polysos.sos_relaxation.sos_relaxation import SOSRelaxation
 
-# Define a simple polynomial
-# Example: f(x) = x^4 - x^2 + 1
-
-# (Pseudo-style depending on your API)
-p = Polynomial(...)
-
-# Build SOS relaxation
-sos = SOSRelaxation(p)
-
-# Solve using SDP
-result = sos.solve(method="sdp")
-
-print("Optimal value:", result)
 
 👉 See examples/ for full working scripts.
+
+---
 
 🧠 Methodology
 
@@ -86,6 +78,8 @@ pytest tests/
 ⚠️ Research prototype
 This library is under active development and primarily intended for research and experimentation.
 
+---
+
 👤 Author
 
 Roozbeh Abolpour
@@ -96,6 +90,9 @@ Polynomial Optimization
 QCQP and Nonconvex Optimization
 Data-Driven Control (MPC)
 Energy Systems
+
+---
+
 📜 License
 
 MIT License (or choose your preferred license)
@@ -103,26 +100,3 @@ MIT License (or choose your preferred license)
 
 ---
 
-# 🔥 Why This README Works (Important)
-
-This version:
-
-✔ Looks like a **serious research library**  
-✔ Shows your **mathematical depth**  
-✔ Is understandable for:
-- researchers
-- collaborators
-- employers  
-
----
-
-# ⚡ Next Step
-
-Now we go to:
-
-👉 `.gitignore`  
-👉 then `pyproject.toml`  
-👉 then `example script` (very important)
-
-Just say:
-**next**
