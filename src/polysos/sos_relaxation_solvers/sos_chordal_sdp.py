@@ -24,4 +24,6 @@ def sos_chordal_sdp(sos_relax,p0):
     objective=cp.Minimize(c@y)
     prob=cp.Problem(objective,constraints)
     prob.solve()
+     if y.value is None:
+        raise ValueError(f"Chordal SOS solve failed. Status: {prob.status}")
     return prob.value, y.value
